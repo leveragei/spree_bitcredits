@@ -1,0 +1,43 @@
+<style>
+ .info{
+  margin: 10px 0 0;
+  font-size: 0.75em;
+  letter-spacing: 1px;
+  line-height: 1.3em;
+  font-weight: 700;
+  text-align: center;
+  font-family: "museo-sans";
+  text-transform: uppercase;
+color:#0ACBCD;
+ }
+ .instruction{
+  display: block;
+  margin: 10px 0 0;
+  font-size: 0.75em;
+  line-height: 1.3em;
+  font-weight: 700;
+  text-align: center;
+  font-family: "museo-sans";
+  text-transform: uppercase;
+  color:#8F8F8F;
+}
+</style>
+<div class="connect_bitcredits" >
+
+  <h1 class="info"><%= Spree.t(:what_is_bitcoin, :scope => :bitcredits) %></h1>
+  <div class="instruction"><%= Spree.t(:bitcoin_instructions, :scope => :bitcredits) %></div>
+  <br/>
+  <div id="bitcredit_widget"></div>
+
+
+</div>
+<script>
+  SpreeBitCredits.paymentMethodID = "<%= payment_method.id %>"
+  SpreeBitCredits.total= "<%= current_order.nil? ? 0 : current_order.total %>"
+  SpreeBitCredits.rails_env = "<%= Rails.env  %>"
+   $.getScript('/bitcredits/getBalance');
+ //"#0ACBCD"
+</script>
+
+
+

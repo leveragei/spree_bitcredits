@@ -18,5 +18,8 @@ module SpreeBitcredits
     end
 
     config.to_prepare &method(:activate).to_proc
+        initializer "spree.bitcredits.payment_methods", :after => "spree.register.payment_methods" do |app|
+      app.config.spree.payment_methods << Spree::Gateway::BitCredits
+    end
   end
 end

@@ -1,0 +1,34 @@
+<fieldset data-hook="bitcredits">
+  <legend align="center"><%= Spree.t(:transaction, :scope => :bitcredits) %></legend>
+
+  <div class="row">
+    <div class="alpha six columns">
+      <dl>
+        <dt><%= Spree.t(:oauth_token, :scope => :bitcredits) %>:</dt>
+        <dd><%= payment.source.oauth_token %></dd>
+
+      </dl>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="alpha six columns">
+      <p>BitCredits Actions:</p>
+
+      <p>&bull; <%= link_to(Spree.t(:update, :scope => :bitcredits), bitcredits_update_url(:number => payment.order.number, :payment_id => payment.id), :method => :post) %></p>
+    </div>
+  </div>
+</fieldset>
+
+<% if payment.log_entries %>
+<fieldset data-hook="bitcredits">
+  <legend><%= Spree.t(:payment_log, :scope => :bitcredits) %></legend>
+
+  <% payment.log_entries.reverse.each do |log| %>
+  <div class="row bitcredits_log_entry">
+    <span>Updated at <%= log.updated_at %>:</span>
+    <p><%= log[:details] %></p>
+  </div>
+  <% end %>
+</fieldset>
+<% end %>

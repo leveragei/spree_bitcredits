@@ -2,4 +2,21 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  bitcredits:
+    pay_with_bitcoins: "Pay with BitCoins"
+    transaction: "Transaction Information"
+    oauth_token: "BitCredits OAuth token"
+    transaction_id: "BitCredits Transaction ID"
+    payment_log: "Payment History"
+    cancel: "Don't want to use BitCredits? No problems."
+    checkout_success: 'BitCredits Checkout: Success'
+    checkout_failure: 'BitCredits Checkout: Failure'
+    oauth_text: 'Click on the button below to connect your BitCredits account.'
+    oauth_logout: 'Not %s? <a href="%s">Click here</a> to logout of Dwolla.'
+    oauth_success: "Great, we have you logged in to BitCredits. Enter your PIN to continue."
+    oauth_fail: 'Something went wrong. BitCredits said: %s'
+    update: 'Update transaction status via BitCredits'
+    refund: 'Refund transaction via BitCredits'
+    what_is_bitcoin: "What is bitcoin?"
+    bitcoin_instructions: "Bitcoin is a virtual currency that is not insured or backed by any government, bank, commodity, other form of money or
+                          anything else of tangible value, exchange rates are provided by Bitcredits and may fluctuate."
