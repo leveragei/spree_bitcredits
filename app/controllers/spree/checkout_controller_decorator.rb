@@ -26,7 +26,7 @@ module Spree
                                          :payment_method => payment_method)
       end
       # save data from bitcredits 
-      source.update_attribute(:old_balance , session[:bitcredits_old_balance])
+   #   source.update_attribute(:old_balance , session[:bitcredits_old_balance])
       source.update_attribute(:source,cookies[:bitc])
     #  source.update_attribute(:new_balance , session[:bitcredits_new_balance])  unless( session[:bitcredits_old_balance].blank? )
             

@@ -64,7 +64,7 @@ module Spree
           if( result["status"] == "success")
               bitcredits_checkout.update_attribute(:new_balance ,result['balance'].to_f )
 
-              paid_sum = bitcredits_checkout.new_balance - bitcredits_checkout.old_balance
+              paid_sum = result['balance'].to_f
 
               if paid_sum == @payment.order.total
                @payment.complete!

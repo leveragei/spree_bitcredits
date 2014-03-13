@@ -13,7 +13,7 @@ SpreeBitCredits = {
   init : function(total){
           window.BitCredits = window.BitCredits || [];
          // window.BitCredits.push(["startBalancePolling"]);
-          var bitc =  readCookie("bitc");
+      //    var bitc =  readCookie("bitc");
       //    window.BitCredits.restoreToken(bitc)
           window.BitCredits.push(["launchPayment", {
               amount: total,
@@ -21,7 +21,7 @@ SpreeBitCredits = {
               colorTheme : "#0ACBCD",
               headerPaid: "Please Save and Continue"}]);
 
-         $.getScript('/bitcredits/getBalance');
+      //   $.getScript('/bitcredits/getBalance');
 
 
   }

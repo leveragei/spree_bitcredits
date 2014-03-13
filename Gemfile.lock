@@ -13,7 +13,7 @@ GIT
 PATH
   remote: .
   specs:
-    spree_bitcredits (2.0.9.beta)
+    spree_bitcredits (2.0.10)
       spree_core (~> 2.0.9.beta)
 
 GEM
