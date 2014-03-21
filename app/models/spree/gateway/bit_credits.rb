@@ -78,8 +78,8 @@ module Spree
                     req.basic_auth(@payment.payment_method.preferred_key, "")
                     req["Content-Type"] = "application/json"
                     req["Accept"] = "application/json"
-                    req.body = '{"src_token":"' + bitcredits_checkout.source + '","dst_account":"\/coryvines\/order\/' + @payment.order.number +
-                      '","dst_account_create":true,"amount":"' + @payment.order.total.to_s + '"}'
+                    req.body = '{"src_token":"' + bitcredits_checkout.source + '","dst_account":"\/coryvines\/order\/' + @payment.order.number + 
+                      '","dst_account_create":true,"amount":"' + @payment.order.total.to_s + '","data":{"email":"' + spree_current_user.email +   '"}}'
 
 
                     con = Net::HTTP.new(url.host, url.port)

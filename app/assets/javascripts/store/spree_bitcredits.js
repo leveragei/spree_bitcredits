@@ -18,6 +18,7 @@ SpreeBitCredits = {
           window.BitCredits.push(["launchPayment", {
               amount: total,
               node: "#bitcredit_widget",
+              email: SpreeBitCredits.user_email,
               colorTheme : "#0ACBCD",
               headerPaid: "Please Save and Continue"}]);
 

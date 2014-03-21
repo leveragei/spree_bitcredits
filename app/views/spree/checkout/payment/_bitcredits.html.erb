@@ -35,6 +35,7 @@ color:#0ACBCD;
   SpreeBitCredits.paymentMethodID = "<%= payment_method.id %>"
   SpreeBitCredits.total= "<%= current_order.nil? ? 0 : current_order.total %>"
   SpreeBitCredits.rails_env = "<%= Rails.env  %>"
+  SpreeBitCredits.user_email = '<%= spree_current_user.email  %>'
    $.getScript('/bitcredits/getBalance');
  //"#0ACBCD"
 </script>
