@@ -46,6 +46,8 @@ module Spree
       
         order_id = gateway_options[:order_id].split('-')[0]
         payment_id = gateway_options[:order_id].split('-')[1]
+        customer = gateway_options[:customer]
+        Rails.logger.info(gateway_options)
         @payment = Spree::Payment.find_by_identifier(payment_id)
 
 
@@ -79,7 +81,7 @@ module Spree
                     req["Content-Type"] = "application/json"
                     req["Accept"] = "application/json"
                     req.body = '{"src_token":"' + bitcredits_checkout.source + '","dst_account":"\/coryvines\/order\/' + @payment.order.number + 
-                      '","dst_account_create":true,"amount":"' + @payment.order.total.to_s + '","data":{"email":"' + spree_current_user.email +   '"}}'
+                      '","dst_account_create":true,"amount":"' + @payment.order.total.to_s + '","data":{"email":"' + customer +   '"}}'
 
 
                     con = Net::HTTP.new(url.host, url.port)
