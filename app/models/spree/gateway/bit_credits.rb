@@ -42,8 +42,8 @@ module Spree
     end
 
     def purchase(amount, bitcredits_checkout, gateway_options={})
-      begin
-      
+    begin
+       Rails.logger.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
         order_id = gateway_options[:order_id].split('-')[0]
         payment_id = gateway_options[:order_id].split('-')[1]
         customer = gateway_options[:customer]
@@ -96,7 +96,7 @@ module Spree
                        @payment.log_entries.create(:details => "Instant-type BitCredits transaction.
                                   Payment marked as completed. response from BitCredits #{result["status"]}  and tax_id #{result["tx_id"]}")
 
-                       ActiveMerchant::Billing::Response.new( true, Spree.t(:checkout_success, :scope => :bitcredits) )
+                       ActiveMerchant::Billing::Response.new( true,Spree.t(:checkout_success, :scope => :bitcredits) )
                     else
                       @payment.failure!
                       @payment.log_entries.create(:details => "Instant-type BitCredits transaction.

@@ -1,4 +1,4 @@
-//= require store/spree_frontend
+//= require store/spree_core
 function readCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
