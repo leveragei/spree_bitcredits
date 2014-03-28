@@ -32,10 +32,10 @@ SpreeBitCredits = {
 $(document).ready(function() {
         var d = document, f = d.getElementsByTagName('script')[0],
         s = d.createElement('script');
-        host = "https://stage-api.bitcredits.io";
+        host = "https://api.bitcredits.io";
 
-        if( SpreeBitCredits.rails_env == "production")
-          host = "https://api.bitcredits.io"
+        if( SpreeBitCredits.rails_env == "staging")
+          host = "https://stage-api.bitcredits.io" //https://stage-api.bitcredits.io
 
 
         s.type = 'text/javascript';s.async = true;s.src = host + "/v1/bitcredits.js";
