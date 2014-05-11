@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_bitcredits'
-  s.version     = '2.0.11'
+  s.version     = '2.0.12'
   s.summary     = 'spree support bit coins'
   s.description = 'spree support bit coins'
   s.required_ruby_version = '>= 1.9.3'
