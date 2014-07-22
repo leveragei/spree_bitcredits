@@ -4,19 +4,19 @@ module Spree
     def save_balance
       return if current_order.nil?
 
-      Rails.logger.info(cookies[:bitc] )
+      Rails.logger.info(cookies[:bitc])
       if session[:bitcredits_old_balance].blank?
         session[:bitcredits_old_balance] = params[:balance].to_f  unless ( params[:balance].nil?)
       end
 
-      if( params[:balance] != session[:bitcredits_old_balance] )
+      if params[:balance] != session[:bitcredits_old_balance]
         session[:bitcredits_new_balance] = params[:balance]
       end
 
       session[:bitcredits_cockie] = params[:bitc] unless params[:bitc].nil?
       render  :js => "Saved" 
-
     end
+
     def get_balance
 #       token = cookies[:bitc]
 #       render :js => "no cookie" if token.nil?
