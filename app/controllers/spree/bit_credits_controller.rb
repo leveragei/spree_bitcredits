@@ -14,7 +14,7 @@ module Spree
       end
 
       session[:bitcredits_cockie] = params[:bitc] unless params[:bitc].nil?
-      render  :js => "Saved" 
+      render  js: "Saved"
     end
 
     def get_balance

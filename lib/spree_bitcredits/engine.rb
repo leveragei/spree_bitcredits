@@ -4,8 +4,6 @@ module SpreeBitcredits
     isolate_namespace Spree
     engine_name 'spree_bitcredits'
 
-    config.autoload_paths += %W(#{config.root}/lib)
-
     # use rspec for tests
     config.generators do |g|
       g.test_framework :rspec
@@ -18,8 +16,9 @@ module SpreeBitcredits
     end
 
     config.to_prepare &method(:activate).to_proc
-        initializer "spree.bitcredits.payment_methods", :after => "spree.register.payment_methods" do |app|
+    initializer "spree.bitcredits.payment_methods", :after => "spree.register.payment_methods" do |app|
       app.config.spree.payment_methods << Spree::Gateway::BitCredits
     end
   end
 end
+

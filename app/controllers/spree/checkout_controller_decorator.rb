@@ -1,9 +1,9 @@
 module Spree
   CheckoutController.class_eval do
-    after_filter :create_bitcredits_payment, :only => [:update]
+    after_filter :create_bitcredits_payment, only: [:update]
 
     def payment_method
-      Spree::PaymentMethod.find(:first, :conditions => ["lower(name) LIKE ?", '%bitcoin%']) || raise(ActiveRecord::RecordNotFound)
+      Spree::PaymentMethod.find(:first, conditions: ["lower(name) LIKE ?", '%bitcoin%']) || raise(ActiveRecord::RecordNotFound)
     end
 
     def create_bitcredits_payment
