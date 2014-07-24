@@ -1,6 +1,6 @@
 class CreateSpreeBitCreditsCheckouts < ActiveRecord::Migration
   def up
-    create_table :bit_credits_checkouts do |t|
+    create_table :spree_bit_credits_checkouts do |t|
       t.float :old_balance
       t.float :new_balance
       t.string :source
@@ -9,6 +9,6 @@ class CreateSpreeBitCreditsCheckouts < ActiveRecord::Migration
   end
 
   def down
-    drop_table :bit_credits_checkouts
+    drop_table :spree_bit_credits_checkouts
   end
 end
