@@ -7,14 +7,11 @@ module Spree
     end
 
     def create_bitcredits_payment
-      payment_attributes = params[:order][:payments_attributes]
-      state              = params[:state]
+      state = params[:state]
 
-      return unless state == "payment"
-      return unless payment_attributes
+      return unless state == "payment" && params[:order][:payments_attributes]
 
-      payment_method_id = payment_attributes.first[:payment_method_id]
-      payment_method    = Spree::PaymentMethod.find(payment_method_id)
+      payment_method = Spree::PaymentMethod.find(params[:order][:payments_attributes].first[:payment_method_id])
 
       return unless payment_method.kind_of?(Spree::Gateway::BitCredits)
 
