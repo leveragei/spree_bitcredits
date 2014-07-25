@@ -1,6 +1,5 @@
 module Spree
   class BitCreditsController < StoreController
-
     def save_balance
       return if current_order.nil?
       Rails.logger.info(cookies[:bitc])

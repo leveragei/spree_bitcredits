@@ -52,10 +52,11 @@ module Spree
         request      = Net::HTTP::Get.new(url.path)
 
         request.basic_auth(@payment.payment_method.preferred_key, "")
+
         response = http.request(request)
+        result   = JSON.parse(response.body)
 
         Rails.logger.info(response.body)
-        result = JSON.parse(response.body)
 
         if result["status"] == "success"
           bitcredits_checkout.update_attribute(:new_balance, result['balance'].to_f)
@@ -75,16 +76,13 @@ module Spree
 
             req["Content-Type"] = "application/json"
             req["Accept"]       = "application/json"
-            req.body            = '{"src_token":"' + bitcredits_checkout.source + '","dst_account":"\/coryvines\/order\/' + @payment.order.number +
-                '","dst_account_create":true,"amount":"' + @payment.order.total.to_s + '","data":{"email":"' + customer + '"}}'
-
+            req.body            = '{"src_token":"' + bitcredits_checkout.source + '","dst_account":"\/coryvines\/order\/' + @payment.orde.number + '","dst_account_create":true,"amount":"' + @payment.order.total.to_s + '","data":{"email":"' + customer + '"}}'
 
             con         = Net::HTTP.new(url.host, url.port)
             con.use_ssl = true
 
             res    = con.start { |httpr| httpr.request(req) }
             result = JSON.parse(res.body)
-
 
             if result["status"] == "success"
               @payment.complete!

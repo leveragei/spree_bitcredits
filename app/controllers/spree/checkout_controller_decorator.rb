@@ -13,19 +13,20 @@ module Spree
 
       payment_method = Spree::PaymentMethod.find(params[:order][:payments_attributes].first[:payment_method_id])
 
-      return unless payment_method.kind_of?(Spree::Gateway::BitCredits)
+      if payment_method.kind_of?(Spree::Gateway::BitCredits)
+        source  = Spree::BitCreditsCheckout.create
+        payment = @order.payments.where(state: "checkout", payment_method_id: payment_method.id).first
 
-      source  = Spree::BitCreditsCheckout.create
-      payment = @order.payments.where(state: "checkout", payment_method_id: payment_method.id).first
+        if payment
+          payment.source = source
+          payment.save
+        else
+          @order.payments.create(amount: @order.total, source: source, payment_method: payment_method)
+        end
 
-      if payment
-        payment.source = source
-        payment.save
-      else
-        @order.payments.create(amount: @order.total, source: source, payment_method: payment_method)
+        source.update_attribute(:source, cookies[:bitc])
       end
 
-      source.update_attribute(:source, cookies[:bitc])
     end
   end
 end
